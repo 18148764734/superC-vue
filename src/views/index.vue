@@ -1,7 +1,7 @@
 <template>
   	<!--全屏显示-->
 	 
-	 <div class="index-center-wrap">
+	 <div class="index-center-wrap" style="    height: 610px !important;">
 		    <div style="margin-bottom:24px" class="
 			  column
 			  is-half-mobile
@@ -49,6 +49,10 @@
 					<input class="input is-info is-focused" type="password" name="pwd" placeholder="验证码"
 						maxlength="16"  pattern="\w{6,16}" disable="true" required v-model="userdata.code"/>
 				</div>
+					<!--点击注册-按钮-->
+					<div class="control">
+					<input style="width:100%" type="submit" name="sub" @click="submint" :disabled="submintbtn" value="点击注册" class="button is-info is-outlined is-normal mt-2">
+				</div>
 				</div>
 				<div class="control mt-2" v-show="false">
 					<p>
@@ -58,10 +62,7 @@
                	 </p>
 				</div>
 
-				<!--点击注册-按钮-->
-				<div class="control">
-					<input type="submit" name="sub" @click="submint" :disabled="submintbtn" value="点击注册" class="button is-info is-outlined is-normal mt-2">
-				</div>
+			
 
 				<p id="ycjh" class="mt-2" style="font-size:15px" align="center">注册后将免费获得3次预测机会</p>
 
