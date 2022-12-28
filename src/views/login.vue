@@ -55,7 +55,7 @@
 			   <div class="field mt-2"  v-if="logshow == '1'">
 				<label class="label content has-text-left-mobile has-text-left-tablet" style="color: darkviolet;">验证码 
 				<div class="control">
-			    <input class="input iphone-wrap is-info" v-model="userphone.code" type="password" name="pwd" placeholder="请输入您的密码" maxlength="16" style="border-width:2px; " pattern="\w{6,16}" required />
+			    <input class="input iphone-wrap is-info" v-model="userphone.code" type="password" name="pwd" placeholder="请输入验证码" maxlength="16" style="border-width:2px; " pattern="\w{6,16}" required />
 				<button class="codebtn button is-info is-outlined is-normal" :disabled="btnclicn" @click="getcode">{{ btntext }}</button>
 			</div>
                 </label>
@@ -106,13 +106,13 @@
 	let logshow = ref('1')
 	let btnclicn  = ref(false)
 	let lontnshow  = ref(false)
-	let btntext = ref('请输入验证码')
+	let btntext = ref('发送验证码')
 	let userdata = ref({
 		name:"",
 		password:"",
 	})
 	let userphone = ref(
-		{"phone":"18824672093","code":"","type":"login","name":"","password":"","level":null}
+		{"phone":"","code":"","type":"login","name":"","password":"","level":null}
 
 	)
 	const router = useRouter()
@@ -134,7 +134,7 @@
 
 							if(time < 1){
 								clearInterval(timer)
-								btntext.value = '获取验证码'
+								btntext.value = '发送验证码'
 								btnclicn.value = false
 							}
 						}, 1000);
@@ -204,9 +204,9 @@
     background-color: #7B68EE;
 }
 .iphone-wrap{
-	width: 60%;
+	width: 70%;
 }
 .codebtn{
-	width: 40%;
+	width: 30%;
 }
 </style>

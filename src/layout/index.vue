@@ -92,12 +92,15 @@
 						<!-- <a class="button is-info is-rounded" href="login.html">
 							<span>登录</span>
 						</a> -->
-						<router-link v-if="$store.state.token == ''" class="button is-info is-rounded" to="/login">
+						<router-link v-if="$route.path != '/login' &&  $store.state.token == ''" class="button is-info is-rounded" to="/login">
 							<span>登录</span>
 						</router-link>
-						<div class="button is-info is-rounded" v-else @click="submit">
+						<div class="button is-info is-rounded" v-if="$store.state.token != ''" @click="submit">
 							退出
 						</div>
+						<router-link v-if=" $route.path == '/login'" class="button is-info is-rounded" to="/">
+							<span>注册</span>
+						</router-link>
 					</span>
 				</p>
 

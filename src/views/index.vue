@@ -21,7 +21,10 @@
 				<h1 style="font-size: 20px; font-family:微软雅黑; color: dodgerblue ;" align="center"> <b>--- 用户注册 ---</b>
 				</h1>
 
-				<div class="field mt-2">
+			
+
+				<div style="width:400px;margin:0 auto">
+					<div class="field mt-2">
 					<div class="control">
 						<input class="input is-info" type="text" v-model="userdata.name" name="userName" placeholder="请设置您的用户名" maxlength="20"
 							pattern="\w{3,20}" required />
@@ -46,7 +49,8 @@
 					<input class="input is-info is-focused" type="password" name="pwd" placeholder="验证码"
 						maxlength="16"  pattern="\w{6,16}" disable="true" required v-model="userdata.code"/>
 				</div>
-				<div class="control mt-2">
+				</div>
+				<div class="control mt-2" v-show="false">
 					<p>
                     <span>性别：</span> 
                     <input type="radio" id="sex" name="sex" value="男" v-model="userdata.sex" /> 男
@@ -66,7 +70,9 @@
 
 		<!--页脚-->
 
-		<footer class="footer is-rounded has-background-info-light">
+	</div>
+	
+	<footer class="footer is-rounded has-background-info-light">
 			<div class="content has-text-centered">
 				<p>
 					<strong>Shandobako</strong> Designed by <a href="www.sunsonic2515.com">SDBK Lab.</a>
@@ -75,7 +81,6 @@
 				</p>
 			</div>
 		</footer>
-	</div>
 	 </div>
 
 </template>
@@ -158,11 +163,11 @@
 	text-align: left;
 	input{
 		display: inline-block;
-		width: 80%;
+		width: 70%;
 	}
 	button{
 		display: inline-block;
-		width: 20%;
+		width: 30%;
 		height: 100%;
 	}
 }
