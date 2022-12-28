@@ -1,0 +1,177 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+p{
+    font-family: "微软雅黑";
+    font-size: medium;
+    line-height: 40px;
+    max-width: 100%;
+
+}
+
+form{
+    max-width: 1000px;
+    width: 100%;
+    text-align: left;
+
+}
+
+#nongli{
+    text-indent: 5em;
+}
+
+#wh{
+    width: 180px;
+}
+
+.bt{
+    width: 100%;
+    max-width: 2000px;
+    height: 100%;
+    color: aliceblue;
+    background-color: lightcoral;
+    font-size: 30px;
+    padding: 25px;
+    box-shadow: 0px 10px 20px 5px gainsboro;
+    margin-bottom: 30px;
+
+}
+
+#ymjbt{
+    text-align: center;
+}
+
+.ymj_system{
+   width: 500px;
+   max-width: 100%;
+   margin: 0,auto;
+
+}
+
+span{
+    color: purple;
+    font-size: 15px;
+}
+
+.qr_button{
+    text-align: center;
+    margin-left: -40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#gcYear{
+    background-color: azure;
+    width: 70px;
+    height:30px ;
+    border-radius: 10px;
+    border: 2px dashed lightcoral;
+}
+
+#gcYear:hover{
+    background-color: aquamarine;
+}
+
+#gcMon{
+    background-color: azure;
+    border-radius: 10px;
+    height:30px ;
+    border: 2px dashed lightcoral;
+}
+
+#gcMon:hover{
+    background-color: aquamarine;
+}
+
+
+#gcDate{
+    background-color: azure;
+    width: 70px;
+    border-radius: 10px;
+    height:30px ;
+    border: 2px dashed lightcoral;
+
+}
+
+#gcDate:hover{
+    background-color: aquamarine;
+}
+
+#gcTime{
+    background-color: azure;
+    border-radius: 10px;
+    height:30px ;
+    width: 130px;
+    border: 2px dashed lightcoral;
+}
+
+#gcTime:hover{
+    background-color: aquamarine;
+}
+
+#lcYear{
+    background-color: cornsilk;
+    width: 70px;
+    height:30px ;
+    border-radius: 10px;
+    border: 2px dashed lightcoral;
+}
+
+#lcYear:hover{
+    background-color: mistyrose;
+}
+
+#lcMon{
+    background-color: cornsilk;
+    border-radius: 10px;
+    height:30px ;
+    border: 2px dashed lightcoral;
+}
+
+#lcMon:hover{
+    background-color: mistyrose;
+}
+
+#lcDate{
+    background-color:  cornsilk;
+    width: 70px;
+    height:30px ;
+    border-radius: 10px;
+    border: 2px dashed lightcoral;
+}
+
+#lcDate:hover{
+    background-color: mistyrose;
+}
+
+#lcTime{
+    background-color:  cornsilk;
+    border-radius: 10px;
+    height:30px ;
+    border: 2px dashed lightcoral;
+    width: 130px;
+}
+
+#lcTime:hover{
+    background-color: mistyrose;
+}
+
+#OriName{
+    width: 300px;
+    border-radius: 10px;
+}
+
+select{
+    background-color:  azure;
+    width: 70px;
+    height:30px ;
+    border-radius: 10px;
+    border: 2px dashed lightcoral;
+}
+
+select:hover{
+    background-color: mistyrose;
+}
