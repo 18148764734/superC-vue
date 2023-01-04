@@ -41,6 +41,14 @@ const routes = [{
                 title: 'origin Shandobako '
             }
         },
+        {
+            path: 'calendar',
+            name: 'calendar',
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/calendar.vue"),
+            meta: {
+                title: 'calendar'
+            }
+        },
         
     ]
 }]
