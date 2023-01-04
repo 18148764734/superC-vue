@@ -38,9 +38,10 @@
 							<a class="navbar-item" href="https://www.baidu.com">
 								实用工具箱
 							</a>
-							<a class="navbar-item" href="https://www.baidu.com">
+						
+							<router-link  class="navbar-item" to="/calendar">
 								万年历查询
-							</a>
+							</router-link>
 							<a class="navbar-item" href="https://www.baidu.com">
 								原命决策系统
 							</a>

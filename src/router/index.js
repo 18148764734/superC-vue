@@ -41,17 +41,19 @@ const routes = [{
                 title: 'origin Shandobako '
             }
         },
-        {
-            path: 'calendar',
-            name: 'calendar',
-            component: () => import( /* webpackChunkName: "quotation" */ "../views/calendar.vue"),
-            meta: {
-                title: 'calendar'
-            }
-        },
+       
         
     ]
-}]
+},
+{
+    path: '/calendar',
+    name: 'calendar',
+    component: () => import( /* webpackChunkName: "quotation" */ "../views/calendar.vue"),
+    meta: {
+        title: 'calendar'
+    }
+},
+]
 
 let router = createRouter({
     history: createWebHashHistory(), //process.env.BASE_URL
