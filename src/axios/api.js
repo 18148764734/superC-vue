@@ -16,5 +16,17 @@ export const logout = (data) =>{
 export const loginsms = (data) =>{
     return axios.post('/loginsms ',data)
 }
+export const resetpassword = (data) =>{
+    return axios.post('/resetpassword ',data)
+}
+export const updatephone = (data) =>{
+    return axios.post('/updatephone ',data)
+}
+export const checkphone = (data) =>{
+    return axios.post('/checkphone ',data)
+}
+export const auths = (data) =>{
+    return axios.post('/auth ',data)
+}
 
 

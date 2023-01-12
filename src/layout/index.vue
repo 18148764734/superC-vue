@@ -99,7 +99,7 @@
 						<div class="button is-info is-rounded" v-if="$store.state.token != ''" @click="submit">
 							退出
 						</div>
-						<router-link v-if=" $route.path == '/login'" class="button is-info is-rounded" to="/">
+						<router-link v-if=" $route.path == '/login'" class="button is-info is-rounded" to="/register">
 							<span>注册</span>
 						</router-link>
 					</span>
@@ -136,12 +136,11 @@ onMounted(()=>{
 	}
 })
 const submit = ()=>{
-	const userdata = JSON.parse(Cookies.get('userdata'))
-	console.log(userdata)
+
 	
-	logout({"newPassword": userdata.newPassword,"phone":userdata.phone}).finally(()=>{
+	logout({"newPassword": Cookies.get('token'),"phone": Cookies.get('phone')}).finally(()=>{
 		store.dispatch('loginok','')
-		Cookies.remove('loginok')
+		Cookies.remove('token')
 		router.push('/login')
 	})
 }

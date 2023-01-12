@@ -5,16 +5,40 @@ import {
 import layOut from "../layout/index.vue";
 const routes = [{
     path: '/',
-    redirect: '/dashboard',
+    redirect: '/main',
     name: 'index',
     component:layOut,
     children:[
         {
-            path: 'dashboard',
-            name: 'dashboard',
-            component: () => import( /* webpackChunkName: "quotation" */ "../views/index.vue"),
+            path: 'main',
+            name: 'main',
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/main.vue"),
             meta: {
                 title: '时空坐标 Shandobako'
+            }
+        },
+        {
+            path: 'register',
+            name: 'register',
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/register.vue"),
+            meta: {
+                title: '时空坐标 Shandobako'
+            }
+        },
+        {
+            path: 'restpwd',
+            name: 'restpwd',
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/restpwd.vue"),
+            meta: {
+                title: '重置密码'
+            }
+        },
+        {
+            path: 'restphone',
+            name: 'restphone',
+            component: () => import( /* webpackChunkName: "quotation" */ "../views/restphone.vue"),
+            meta: {
+                title: '重置手机号'
             }
         },
         {

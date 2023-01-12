@@ -75,7 +75,8 @@
 						>账号密码登陆</span>  | <span 
 						style="cursor: pointer;"
 						@click="logshow = '1'"
-						>手机号登陆</span>
+						>手机号登陆</span> | 
+						<span tyle="cursor: pointer;" @click="$router.push('/restpwd')"> 忘记密码 </span>
 				</div>
 					
                 </div>
@@ -102,7 +103,7 @@
 	import Cookies from 'js-cookie'
 	import {useRouter} from 'vue-router'
 	import {useStore} from 'vuex'
-	import {GetCode,loginsms} from '../axios/api.js'
+	import {GetCode,loginsms,auths} from '../axios/api.js'
 	let logshow = ref('1')
 	let btnclicn  = ref(false)
 	let lontnshow  = ref(false)
@@ -156,11 +157,12 @@
 				lontnshow.value = true
 				loginsms(userphone.value).then((res)=>{
 					if(res.data.code == '0'){
-							Cookies.set('token',res.data.data.newPassword)
-							Cookies.set('userdata',JSON.stringify(res.data.data))
+							Cookies.set('token',res.data.data)
+							Cookies.set('username',res.data.username)
+							// Cookies.set('userdata',JSON.stringify(res.data.data))
 
-							store.dispatch('loginok',res.data.data.newPassword)
-							console.log(store.state)
+							store.dispatch('loginok',res.data.data)
+							auths({"newPassword":res.data.data,"phone": "15119380977"})
 							router.push('/main')
 					}else{
 						alert(res.data.msg)
@@ -179,10 +181,11 @@
 						console.log(res)
 						
 						if(res.data.code == '0'){
-							Cookies.set('token',res.data.data.newPassword)
-							Cookies.set('userdata',JSON.stringify(res.data.data))
+							Cookies.set('token',res.data.data)
+							Cookies.set('username',res.data.username)
+							// Cookies.set('userdata',JSON.stringify(res.data.data))
 
-							store.dispatch('loginok',res.data.data.newPassword)
+							store.dispatch('loginok',res.data.data)
 							console.log(store.state)
 							router.push('/main')
 						}else{
