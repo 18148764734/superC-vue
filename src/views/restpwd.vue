@@ -81,10 +81,10 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import {ref,onMounted} from 'vue'
 import { ElMessage,ElLoading } from 'element-plus'
 import {GetCode,resetpassword} from '../axios/api.js'
-import {useRouter} from 'vue-router'
+import {useRouter,onBeforeRouteLeave } from 'vue-router'
     const steps = ref('1') 
     const phone = ref('') 
     const code = ref('') 
@@ -92,6 +92,15 @@ import {useRouter} from 'vue-router'
     const pwds = ref('') 
     const btntext = ref('重新发送')
     const router = useRouter()
+    
+    onMounted(()=>{
+        console.log('onMounted')
+    })
+    
+    onBeforeRouteLeave(()=>{
+        steps.value = '1'
+    })
+   
     
     const save = ()=>{
         if(code.value == ''){
@@ -122,7 +131,7 @@ import {useRouter} from 'vue-router'
         GetCode({"phone":phone.value,"type":"resetPassword"} ).then((res)=>{
             if(res.data.code == '0'){
                         ElMessage.success('发送成功')
-                        let num = 60
+                        let num = 120
                         let timer = setInterval(() => {
                             num -- 
                             btntext.value = (num+'s 后重新发送')
@@ -156,7 +165,7 @@ import {useRouter} from 'vue-router'
                     if(res.data.code == '0'){
                         ElMessage.success('发送成功')
                         steps.value = '5' 
-                        let num = 60
+                        let num = 120
                         let timer = setInterval(() => {
                             num -- 
                             btntext.value = (num+'s 后重新发送')
@@ -200,7 +209,9 @@ import {useRouter} from 'vue-router'
         width: 250px !important;
     }
 }
-
+.codebtn{
+    width: auto;
+}
 button{
     cursor: pointer;
 }

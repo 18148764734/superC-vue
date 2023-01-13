@@ -11,10 +11,11 @@
     <div class="content is-normal">
         <nav class="navbar is-transparent mt-4">
             <div class="navbar-brand">
-				<a class="navbar-item" href="https://bulma.io">
+			
+				<router-link  class="navbar-item" to="/main">
 					<img src="../assets/img/shandobako_colorful.png" alt="shandobako: a smart predicting device" width="180"
 						height="30">
-				</a>
+				</router-link>
 				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
@@ -72,10 +73,10 @@
 						</a>
 
 						<div class="navbar-dropdown is-right">
-							<a class="navbar-item" href="https://www.baidu.com">
+							<a class="navbar-item"  href="https://www.baidu.com">
 								决策结果
 							</a>
-							<a class="navbar-item is-active" href="https://www.baidu.com">
+							<a class="navbar-item " href="https://www.baidu.com">
 								个人档案
 							</a>
 							<a class="navbar-item" href="https://www.baidu.com">

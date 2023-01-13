@@ -78,7 +78,7 @@
           
         </div>
         <br>
-        <button v-if="steps == '1'" @click="steps = '2'">下一步</button>
+        <button v-if="steps == '1'" @click="step1">下一步</button>
         <button v-if="steps == '2'" @click="step2">下一步</button>
         <button v-if="steps == '3'" @click="step3">下一步</button>
         <button v-if="steps == '4'" @click="step4">重新登陆</button>
@@ -98,7 +98,8 @@
 import {ref} from 'vue'
 import { ElMessage,ElLoading } from 'element-plus'
 import {GetCode,updatephone,checkphone} from '../axios/api.js'
-import {useRouter} from 'vue-router'
+import {useRouter,onBeforeRouteLeave,onBeforeRouteUpdate } from 'vue-router'
+
 import Cookies from 'js-cookie'
     const steps = ref('1') 
     const phone = ref('') 
@@ -113,11 +114,26 @@ import Cookies from 'js-cookie'
     var reg='^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-9])|(18[0-9])|166|198|199|191|(147))\\d{8}$';
     var regExp=new RegExp(reg);
     var timers;
+    var timersetInterval;
+    onBeforeRouteLeave(()=>{
+        steps.value = '1'
+    })
     const step4 = ()=>{
         clearTimeout(timers)
         router.push('/login')
        
     }
+    const step1 = ()=>{
+        if(!Cookies.get('token')){
+            ElMessage.error('请先登陆')
+            router.push('/login')
+            
+        }else{
+            steps.value = '2'
+        }
+       
+    }
+ 
     const save = ()=>{
         if(code.value == ''){
             ElMessage.error('请输入验证码')
@@ -155,12 +171,12 @@ import Cookies from 'js-cookie'
         GetCode({"phone":phone.value,"type":"updatePhone"} ).then((res)=>{
             if(res.data.code == '0'){
                         ElMessage.success('发送成功')
-                        let num = 60
-                        let timer = setInterval(() => {
+                        let num = 120
+                        timersetInterval = setInterval(() => {
                             num -- 
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
-                                clearInterval(timer)
+                                clearInterval(timersetInterval)
                                 btntext.value = ('重新发送')
                             }
                         }, 1000);
@@ -173,12 +189,12 @@ import Cookies from 'js-cookie'
         GetCode({"phone":newphone.value,"type":"updatePhone"} ).then((res)=>{
             if(res.data.code == '0'){
                         ElMessage.success('发送成功')
-                        let num = 60
-                        let timer = setInterval(() => {
+                        let num = 120
+                        timersetInterval = setInterval(() => {
                             num -- 
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
-                                clearInterval(timer)
+                                clearInterval(timersetInterval)
                                 btntext.value = ('重新发送')
                             }
                         }, 1000);
@@ -195,6 +211,7 @@ import Cookies from 'js-cookie'
             checkphone({"phone":phone.value,"code":oldcode.value,"name":Cookies.get('username')}).then((res)=>{
                 if(res.data.code == '0'){
                     steps.value = '5' 
+                    clearInterval(timersetInterval)
                     btntext.value = '重新发送'
                 }else{
                     ElMessage.error(res.data.msg)
@@ -216,12 +233,12 @@ import Cookies from 'js-cookie'
                     if(res.data.code == '0'){
                         ElMessage.success('发送成功')
                         steps.value = '3' 
-                        let num = 60
-                        let timer = setInterval(() => {
+                        let num = 120
+                        timersetInterval = setInterval(() => {
                             num -- 
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
-                                clearInterval(timer)
+                                clearInterval(timersetInterval)
                                 btntext.value = ('重新发送')
                             }
                         }, 1000);
@@ -259,6 +276,9 @@ import Cookies from 'js-cookie'
         text-align: left !important;
         width: 250px !important;
     }
+}
+.codebtn{
+    width: auto !important;
 }
 .step-3-wrap button{
     width: auto;
