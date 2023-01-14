@@ -20,11 +20,11 @@
         <span v-if="steps == '5'">请您输入新的手机号码，
 并输入您的账号密码进行重置操作。</span>
         <br>
-        <img v-if="steps == '1'" src="../assets/img/restpwd/1 怎么办.gif" alt="">
-        <img v-if="steps == '2'"  src="../assets/img/restpwd/2 偷笑.gif" alt="">
-        <img v-if="steps == '3'" src="../assets/img/restpwd/3 我来啦.gif" alt="">
-        <img v-if="steps == '4'" src="../assets/img/restpwd/4 送你花.gif" alt="">
-        <img v-if="steps == '5'" src="../assets/img/restpwd/5 害羞.gif" alt="">
+        <img v-if="steps == '1'" src="../assets/img/restpwd/1.gif" alt="">
+        <img v-if="steps == '2'"  src="../assets/img/restpwd/2.gif" alt="">
+        <img v-if="steps == '3'" src="../assets/img/restpwd/3.gif" alt="">
+        <img v-if="steps == '4'" src="../assets/img/restpwd/4.gif" alt="">
+        <img v-if="steps == '5'" src="../assets/img/restpwd/5.gif" alt="">
         <br>
         <div v-if="steps == '2'" class="step-2-wrap">
             <div class="l-text">
@@ -56,7 +56,10 @@
                     验证码:
                 </div>
                 <input type="text" placeholder="请输入验证码" v-model="code">
-                <button @click="ajaxcode5" class="codebtn" :disabled="btntext != '重新发送'" :style="{backgroundColor:btntext != '重新发送' ? '#CCC' :'#FFB0B0'}">
+                <button @click="ajaxcode5" class="codebtn" v-if="btntext == '发送验证码'" :style="{backgroundColor:'#FFB0B0'}">
+                      {{btntext}}
+                 </button>
+                <button @click="ajaxcode5" class="codebtn" v-else :disabled="btntext != '重新发送'" :style="{backgroundColor:btntext != '重新发送' ? '#CCC' :'#FFB0B0'}">
                       {{btntext}}
                  </button>
             </div>
@@ -94,7 +97,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup >
 import {ref} from 'vue'
 import { ElMessage,ElLoading } from 'element-plus'
 import {GetCode,updatephone,checkphone} from '../axios/api.js'
@@ -109,7 +112,7 @@ import Cookies from 'js-cookie'
     const oldcode = ref('') 
     const pwd = ref('') 
     const pwds = ref('') 
-    const btntext = ref('重新发送')
+    const btntext = ref('发送验证码')
     const router = useRouter()
     var reg='^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-9])|(18[0-9])|166|198|199|191|(147))\\d{8}$';
     var regExp=new RegExp(reg);
@@ -177,7 +180,7 @@ import Cookies from 'js-cookie'
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
                                 clearInterval(timersetInterval)
-                                btntext.value = ('重新发送')
+                                btntext.value = '重新发送'
                             }
                         }, 1000);
                     }else{
@@ -195,7 +198,7 @@ import Cookies from 'js-cookie'
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
                                 clearInterval(timersetInterval)
-                                btntext.value = ('重新发送')
+                                btntext.value = '重新发送'
                             }
                         }, 1000);
                     }else{
@@ -212,7 +215,7 @@ import Cookies from 'js-cookie'
                 if(res.data.code == '0'){
                     steps.value = '5' 
                     clearInterval(timersetInterval)
-                    btntext.value = '重新发送'
+                    btntext.value = '发送验证码'
                 }else{
                     ElMessage.error(res.data.msg)
                 }
@@ -239,7 +242,7 @@ import Cookies from 'js-cookie'
                             btntext.value = (num+'s 后重新发送')
                             if(num <=0){
                                 clearInterval(timersetInterval)
-                                btntext.value = ('重新发送')
+                                btntext.value = '重新发送'
                             }
                         }, 1000);
                     }else{
@@ -252,7 +255,7 @@ import Cookies from 'js-cookie'
 </script>
 
 
-<style>
+<style scoped>
 
 @media screen and (max-width:998px) {
  .bottomtext{

@@ -226,7 +226,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup >
 import {ref,watch,reactive} from 'vue'
 import calendarFormatter from '../assets/js/dateChange.js'
 

@@ -1,9 +1,9 @@
-<script setup lang="ts">
-
+<script setup >
+    console.log(import.meta.env)
 </script>
 
 <template>
-
+  
    <router-view v-slot="{ Component }">
         <component :is="Component" />
     </router-view>

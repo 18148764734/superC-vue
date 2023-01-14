@@ -14,7 +14,7 @@
     </div>
   </template>
    
-<script setup>
+<script setup >
     import calendar from '../assets/js/calendar.js'
     import {ref} from 'vue'
     console.log(calendar)

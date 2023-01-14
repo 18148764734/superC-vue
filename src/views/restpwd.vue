@@ -17,10 +17,10 @@
         <span v-if="steps == '5'">为保障您的帐号安全，请重新设置密码；
 密码不少于6位，至少包含字母/数字/符号2种组合。</span>
         <br>
-        <img v-if="steps == '1'" src="../assets/img/restpwd/1 怎么办.gif" alt="">
-        <img v-if="steps == '2'" src="../assets/img/restpwd/2 偷笑.gif" alt="">
-        <img v-if="steps == '3'" src="../assets/img/restpwd/3 我来啦.gif" alt="">
-        <img v-if="steps == '5'" src="../assets/img/restpwd/5 害羞.gif" alt="">
+        <img v-if="steps == '1'" src="../assets/img/restpwd/1.gif" alt="">
+        <img v-if="steps == '2'" src="../assets/img/restpwd/2.gif" alt="">
+        <img v-if="steps == '3'" src="../assets/img/restpwd/3.gif" alt="">
+        <img v-if="steps == '5'" src="../assets/img/restpwd/5.gif" alt="">
         <br>
         <div v-if="steps == '2'" class="step-2-wrap">
             <div class="l-text">
@@ -80,7 +80,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup >
 import {ref,onMounted} from 'vue'
 import { ElMessage,ElLoading } from 'element-plus'
 import {GetCode,resetpassword} from '../axios/api.js'

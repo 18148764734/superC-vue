@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage,ElLoading,ElNotification  } from 'element-plus'
 import Cookies from 'js-cookie'
 const service = axios.create({
-    baseURL:"/api"
+    baseURL:import.meta.env.VITE_APP_BASE_API
 })
 
 var loading ;
